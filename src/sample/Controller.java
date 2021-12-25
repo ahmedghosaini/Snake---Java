@@ -1,5 +1,11 @@
 package sample;
 
+import javafx.fxml.FXML;
+
 public class Controller {
-    int j;
+    @FXML
+    public void moveUp(){
+        System.out.print("up");
+
+    }
 }
