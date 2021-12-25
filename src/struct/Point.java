@@ -2,7 +2,6 @@ package struct;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
 import sample.Main;
 
 public class Point {
@@ -10,8 +9,8 @@ public class Point {
     Type type;
     int x;
     int y;
-    public static int point_size = 20;
-    public static int step = point_size;
+    int point_size = Main.dimension;
+    int step = Main.dimension;
     Color point_color = Color.GREEN;
 
 
@@ -56,10 +55,10 @@ public class Point {
 
     public void setColor() {
         switch (type){
-            case HEAD -> setPoint_color(Color.RED);
+            case HEAD -> setPoint_color(Color.GREENYELLOW);
             case BODY -> setPoint_color(Color.GREEN);
-            case TAIL -> setPoint_color(Color.BLUE);
-            default -> setPoint_color(Color.BEIGE);
+            case TAIL -> setPoint_color(Color.DARKGREEN);
+            default -> setPoint_color(Color.YELLOW);
         }
     }
 
@@ -68,8 +67,14 @@ public class Point {
     }
 
     public void move_point(int x, int y){
-        this.setX(x);
-        this.setY(y);
+        if (y>Main.window_height-40){
+            y = 0;
+        }else
+            this.setY(y);
+        if (x>Main.window_width-40){
+            x = 0;
+        }else
+            this.setX(x);
     }
 
     public void step_up(){
@@ -81,7 +86,7 @@ public class Point {
     }
     public void step_down(){
         y += step;
-        if (y>Main.window_height){
+        if (y>Main.window_height-40){
             y = 0;
         }
         rect.setY(y);
@@ -96,7 +101,7 @@ public class Point {
     public void step_right(){
 
         x += step;
-        if (x>Main.window_width){
+        if (x>Main.window_width-40){
             x = 0;
         }
         rect.setX(x);
