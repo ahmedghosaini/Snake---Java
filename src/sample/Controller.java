@@ -6,6 +6,6 @@ public class Controller {
     @FXML
     public void moveUp(){
         System.out.print("up");
-
     }
+
 }
